@@ -1,0 +1,20 @@
+version: '3.4'
+services:
+  webserver:
+    build: .
+    container_name: 'webserver'
+    restart: 'always'
+    ports:
+      - "8080:80"
+      - "443:443"
+    volumes:
+      - ${PWD}/src:/var/www/html
+    command:
+      - bash
+      - -c
+      - |
+        set -e
+        echo 'running prestart script'
+        /docker-init.sh
+        echo 'initialization done, starting apache'
+        exec /usr/sbin/apache2ctl -D FOREGROUND

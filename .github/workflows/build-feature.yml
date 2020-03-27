@@ -19,12 +19,12 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-southeast-2
-    - name: prepare easy-php-app docker image
-      run: |
-        pwd
-        ls -l
-        docker build -t easy-php-app .
-        docker images
+#    - name: prepare easy-php-app docker image
+#      run: |
+#        pwd
+#        ls -l
+#        docker build -t easy-php-app .
+#        docker images
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
